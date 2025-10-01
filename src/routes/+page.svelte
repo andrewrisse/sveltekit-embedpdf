@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { WebWorkerEngine } from '@embedpdf/engines/worker';
-	import type { PdfDocumentObject, PdfPageObject } from '@embedpdf/models';
+	import type { PdfDocumentObject, PdfFileUrl, PdfPageObject } from '@embedpdf/models';
 
 	let container: HTMLImageElement | null = $state(null);
 	let imageUrl = $state('');
@@ -32,7 +32,7 @@
 
 	async function setFile() {
 		if (engine) {
-			const fileUrl = { id: 'my-doc', url: 'https://snippet.embedpdf.com/ebook.pdf' };
+			const fileUrl: PdfFileUrl = { id: 'my-doc', url: 'https://snippet.embedpdf.com/ebook.pdf' };
 			document = await engine.openDocumentUrl(fileUrl).toPromise();
 			const page = document.pages[0];
 			await renderPage(page);

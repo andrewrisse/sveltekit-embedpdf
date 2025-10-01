@@ -57,11 +57,9 @@
 </script>
 
 <div class="flex w-full flex-col">
-	<div class="flex h-full max-h-full w-full">
-		<div id="pdf-container" class=" mx-auto my-2 overflow-y-auto">
-			{#if imageUrl}
-				<img bind:this={container} id="pdf-viewer" alt="pdf" src={imageUrl} />
-			{/if}
-		</div>
+	<div id="pdf-container" class=" mx-auto my-2">
+		{#if imageUrl}
+			<img bind:this={container} id="pdf-viewer" alt="pdf" src={imageUrl} />
+		{/if}
 	</div>
 </div>
